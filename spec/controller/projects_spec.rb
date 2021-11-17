@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe ProjectsController, type: :controller do
+
+  #devise addition
+  login_user
+
   context "GET #index" do
     it "returns a success response" do
       get :index
@@ -35,6 +39,7 @@ RSpec.feature "Projects", type: :feature do
     end
 
     scenario "should be successful" do
+
       fill_in "Description", with: "Test description"
       click_button "Create Project"
       expect(page).to have_content("Project was successfully created")
