@@ -1,9 +1,8 @@
 require "rails_helper"
 
+
 RSpec.describe ProjectsController, type: :controller do
 
-  #devise addition
-  login_user
 
   context "GET #index" do
     it "returns a success response" do
@@ -31,6 +30,7 @@ end
 
 RSpec.feature "Projects", type: :feature do
   context "Create new project" do
+    login_user
     before(:each) do
       visit new_project_path
       within("form") do
