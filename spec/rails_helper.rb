@@ -81,4 +81,8 @@ SimpleCov.start 'rails' do
   add_filter '/spec/' # for rspec
   add_filter '/log/'
   add_filter '/app/channels/'
+  add_filter '/app/mailers/'
+  add_filter 'app/views/devise'
+  add_filter 'app/jobs'
+  add_filter 'app/helpers'
 end
