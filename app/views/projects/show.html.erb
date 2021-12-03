@@ -1,14 +1,22 @@
+<% provide(:page_title, @project.title) %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+<div class="container px-5 bg-light">
+<h1 class="display-4 text-center">
+<%= @project.title %>
+</h1>
 
-<p>
-  <strong>Description:</strong>
+<h5 class="display-5" >
   <%= @project.description %>
-</p>
+</h5>
 
+
+</div>
+
+
+<% if user_signed_in? %>
+<div class="container text-center">
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+</div>
+<% end %>

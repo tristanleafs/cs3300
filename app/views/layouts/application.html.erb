@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tristan Lee</title>
+    <title><%= yield(:page_title) %> | Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">Tristan Lee</a>
+    <div class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+    <%= button_to "New Project", new_project_path, method: :get, :class => "btn btn-outline-primary" , :form_class => "form-inline"%>
+    <div style="padding-left: 10px;">
+    <%= button_to "Edit Profile", edit_user_registration_path, method: :get, :class => "btn btn-outline-primary",  :form_class => "form-inline"%>
+    </div>
+    <div style="padding-left: 10px;">
+    <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-outline-success",  :form_class => "form-inline"%>
+    </div>
+    <% else %>
+    <%= button_to "Login", new_user_session_path, method: :get, :class => "btn btn-outline-primary", :form_class => "form-inline" %>
+    
+    <div style="padding-left: 10px;">
+    <%= button_to "Sign Up", new_user_registration_path, method: :get, :class => "btn btn-outline-success", :form_class => "form-inline" %>
+    </div>
+    <% end %>
+    </div>
+  </nav>
+
+  <div id="wrap">
+  <main role="main" id="main">
+  <%= yield %>
+  </main>
+  <hr>
+  </div>
+    <footer class="container text-center">
+    <p>Tristan Lee | tlee2@uccs.edu</p>
+  </footer>
   </body>
 </html>

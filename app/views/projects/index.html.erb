@@ -1,29 +1,55 @@
+<% provide(:page_title, "Home") %>
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
+<div class="jumbotron">
+<div class="container">
+  <h1 class="display-3">Tristan Lee</h1>
+  <p>Electrical Engineering student at University of Colorado Colorado Springs</p>
+</div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container">
+<!-- Example row of columns -->
+<% for i in 0..(@projects.count%3) do %>
+<div class="row mb-5">
+  <% if (i*3) < @projects.count %>
+  <div class="col-md-4">
+    <h2><%=@projects[i*3].title%></h2>
+    <p><%=@projects[i*3].description%></p>
+    <%=button_to 'See More »', @projects[(i*3)], method: :get, :class => "btn btn-secondary"%>
+    <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_project_path(@projects[i*3]) %> | 
+    <%= link_to 'Delete', @projects[i*3], method: :delete, data: { confirm: 'Are you sure you want to delete this project?' } %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <% end %>
+  <% if (i*3)+1 < @projects.count %>
+  <div class="col-md-4">
+  <h2><%=@projects[(i*3)+1].title%></h2>
+    <p><%=@projects[(i*3)+1].description%></p>
+    <%=button_to 'See More »', @projects[(i*3)+1], method: :get, :class => "btn btn-secondary"%>
+    <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_project_path(@projects[(i*3)+1]) %> | 
+    <%= link_to 'Delete', @projects[(i*3)+1], method: :delete, data: { confirm: 'Are you sure you want to delete this project?' } %>
+    <% end %>
+  </div>
+  <% end %>
+  <% if (i*3)+2 < @projects.count %>
+  <div class="col-md-4">
+  <h2><%=@projects[(i*3)+2].title%></h2>
+    <p><%=@projects[(i*3)+2].description%></p>
+    <%=button_to 'See More »', @projects[(i*3)+2], method: :get, :class => "btn btn-secondary"%>
+    <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_project_path(@projects[(i*3)+2]) %> | 
+    <%= link_to 'Delete', @projects[(i*3)+2], method: :delete, data: { confirm: 'Are you sure you want to delete this project?' } %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
 
+<% end %>
+
+<hr>
+
+</div> <!-- /container -->
 <br>
-
-<%= link_to 'New Project', new_project_path %>
