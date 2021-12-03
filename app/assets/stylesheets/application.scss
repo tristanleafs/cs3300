@@ -16,8 +16,31 @@
  @import "bootstrap";
 
  body {
-    padding-top: 3.5rem;
+    background-color: #000;
+    color: #fff;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 13px;
+    margin-top: 3.5rem;
+    //line-height: 18px;
   }
+
+
+  div {
+    &.field, &.actions {
+      margin-bottom: 10px;
+    }
+    background-color: #000;
+    
+    
+  }
+  hr{
+    background-color: #fff;
+  }
+
+ nav{
+   margin-bottom: 0rem;
+ }
+  
 
   .login > .card {
     width: 22rem;
